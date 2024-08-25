@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
 import { NavLinks } from "./Navlinks";
 
+type Theme = "lemonade" | "dim";
+
 export const Navbar = () => {
-  const [theme, setTheme] = useState(false);
+  const getThemeFromLocalStorage = (): Theme => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "lemonade" || storedTheme === "dim") {
+      return storedTheme;
+    }
+    return "lemonade";
+  };
+
+  const [theme, setTheme] = useState<Theme>(getThemeFromLocalStorage());
 
   const handleTheme = () => {
-    setTheme(!theme);
+    const newTheme = theme === "lemonade" ? "dim" : "lemonade";
+    setTheme(newTheme);
   };
+
+  useEffect(() => {
+    // Need to add theme to index.html to make it work
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <nav className="bg-base-200">
