@@ -5,7 +5,7 @@ export { Error } from "./Error";
 export { HomeLayout } from "./HomeLayout";
 export { Register } from "./Register";
 export { Login } from "./Login";
-export { SingleProduct } from "./SingleProduct";
+export { SingleProduct } from "./SingleProduct/SingleProduct";
 export { Products } from "./Products";
 export { Orders } from "./Orders";
 export { Landing } from "./Landing";
