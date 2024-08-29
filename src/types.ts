@@ -41,3 +41,11 @@ type Pagination = {
   pageCount: number;
   total: number;
 };
+
+export type SearchAndFilterParams = Pick<
+  ProductAttributes,
+  "company" | "category" | "shipping" | "price"
+> & {
+  search: string;
+  order: "a-z" | "z-a" | "high" | "low";
+};

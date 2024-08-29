@@ -5,12 +5,13 @@ type FormRangeProps = {
   label: string;
   name: string;
   size: string;
+  price: string;
 };
 
-export const FormRange = ({ label, name, size }: FormRangeProps) => {
+export const FormRange = ({ label, name, size, price }: FormRangeProps) => {
   const step = 1000;
   const maxPrice = 100000;
-  const [selectedPrice, setSelectedPrice] = useState(maxPrice);
+  const [selectedPrice, setSelectedPrice] = useState(price || maxPrice);
 
   return (
     <div className="form-control">

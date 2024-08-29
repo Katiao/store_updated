@@ -9,3 +9,4 @@ export { FeaturedProducts } from "./FeaturedProducts";
 export { PaginationContainer } from "./PaginationContainer";
 export { Filters } from "./Filters";
 export { ProductsContainer } from "./ProductsContainer";
+export { Loading } from "./Loading";
