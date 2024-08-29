@@ -6,3 +6,6 @@ export { Hero } from "./Hero";
 export { ErrorElement } from "./ErrorElement";
 export { SectionTitle } from "./SectionTitle";
 export { FeaturedProducts } from "./FeaturedProducts";
+export { PaginationContainer } from "./PaginationContainer";
+export { Filters } from "./Filters";
+export { ProductsContainer } from "./ProductsContainer";
