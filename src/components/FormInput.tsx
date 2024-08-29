@@ -3,6 +3,7 @@ type FormInputProps = {
   name: string;
   type: string;
   defaultValue?: string;
+  size: string;
 };
 
 export const FormInput = ({
@@ -10,6 +11,7 @@ export const FormInput = ({
   name,
   type,
   defaultValue,
+  size,
 }: FormInputProps) => {
   return (
     <div className="form-control ">
@@ -20,7 +22,7 @@ export const FormInput = ({
         type={type}
         name={name}
         defaultValue={defaultValue}
-        className="input input-bordered "
+        className={`input input-bordered ${size}`}
       />
     </div>
   );

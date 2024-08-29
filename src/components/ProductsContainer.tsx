@@ -21,6 +21,7 @@ export const ProductsContainer = () => {
         : "btn-ghost text-base-content"
     }`;
   };
+  // TODO: to clean up into separate components
 
   return (
     <>
