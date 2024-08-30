@@ -49,3 +49,14 @@ export type SearchAndFilterParams = Pick<
   search: string;
   order: "a-z" | "z-a" | "high" | "low";
 };
+
+export type CartProduct = {
+  // cart ID probably will not be needed anymore as I removed color
+  cartID: number;
+  productID: number;
+  image: string;
+  title: string;
+  price: string;
+  amount: number;
+  company: string;
+};

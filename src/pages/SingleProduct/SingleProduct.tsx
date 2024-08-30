@@ -1,8 +1,10 @@
 import { useLoaderData, LoaderFunctionArgs } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../features/cart/cartSlice";
 import { formatPrice, customFetch } from "../../utils";
 import { useState } from "react";
 
-import type { Product } from "../../types";
+import type { Product, CartProduct } from "../../types";
 import { CartButton, Amount, Breadcrumbs, ProductInfo } from "./components";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -16,6 +18,22 @@ export const SingleProduct = () => {
   const dollarsAmount = formatPrice(price);
 
   const [amount, setAmount] = useState(1);
+  const dispatch = useDispatch();
+
+  const cartProduct: CartProduct = {
+    // cart ID probably will not be needed anymore as I removed color
+    cartID: product.id,
+    productID: product.id,
+    image,
+    title,
+    price,
+    amount,
+    company,
+  };
+
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }));
+  };
 
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAmount(parseInt(e.target.value));
@@ -41,7 +59,7 @@ export const SingleProduct = () => {
 
           <Amount amount={amount} handleAmount={handleAmount} />
 
-          <CartButton />
+          <CartButton onButtonClick={addToCart} />
         </div>
       </div>
     </section>
