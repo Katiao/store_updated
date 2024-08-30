@@ -1,35 +1,17 @@
-import { useState, useEffect } from "react";
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { toggleTheme } from "../features/user/userSlice";
 import { NavLinks } from "./Navlinks";
 import { RootState } from "../store";
 
-type Theme = "lemonade" | "dim";
-
 export const Navbar = () => {
-  const getThemeFromLocalStorage = (): Theme => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "lemonade" || storedTheme === "dim") {
-      return storedTheme;
-    }
-    return "lemonade";
-  };
-
-  const [theme, setTheme] = useState<Theme>(getThemeFromLocalStorage());
-
+  const dispatch = useDispatch();
   const handleTheme = () => {
-    const newTheme = theme === "lemonade" ? "dim" : "lemonade";
-    setTheme(newTheme);
+    dispatch(toggleTheme());
   };
-
-  useEffect(() => {
-    // Need to add theme to index.html to make it work
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   const numItemsInCart = useSelector(
     (state: RootState) => state.cartState.numItemsInCart

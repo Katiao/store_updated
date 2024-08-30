@@ -60,3 +60,5 @@ export type CartProduct = {
   amount: number;
   company: string;
 };
+
+export type Theme = "lemonade" | "dim";
