@@ -15,7 +15,7 @@ const getThemeFromLocalStorage = (): Theme => {
 };
 
 type UserState = {
-  user: { username: string };
+  user?: { username: string };
   theme: Theme;
 };
 
@@ -32,7 +32,10 @@ const userSlice = createSlice({
       console.log("login");
     },
     logoutUser: (state) => {
-      console.log("logout");
+      state.user = undefined;
+      // localStorage.clear()
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully");
     },
     toggleTheme: (state) => {
       state.theme = state.theme === "dim" ? "lemonade" : "dim";

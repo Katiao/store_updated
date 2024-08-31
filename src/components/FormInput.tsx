@@ -3,7 +3,7 @@ type FormInputProps = {
   name: string;
   type: string;
   defaultValue?: string;
-  size: string;
+  size?: string;
 };
 
 export const FormInput = ({
