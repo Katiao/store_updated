@@ -12,3 +12,4 @@ export { ProductsContainer } from "./ProductsContainer";
 export { Loading } from "./Loading";
 export { CartTotals } from "./CartTotals";
 export { CartItemsList } from "./CartItemsList";
+export { CheckoutForm } from "./CheckoutForm";
