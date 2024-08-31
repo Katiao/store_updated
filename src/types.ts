@@ -61,6 +61,36 @@ export type CartProduct = {
   company: string;
 };
 
+type OrderAttributes = {
+  address: string;
+  cartItems: CartProduct[];
+  createdAt: string;
+  name: string;
+  numItemsInCart: number;
+  orderTotal: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+export type OrderHistoryItem = {
+  id: number;
+  attributes: OrderAttributes;
+};
+
+export type OrderHistoryMeta = {
+  pagination: {
+    page: number;
+    pageCount: number;
+    pageSize: number;
+    total: number;
+  };
+};
+
+export type OrderHistoryApiResponse = {
+  data: OrderHistoryItem[];
+  meta: OrderHistoryMeta;
+};
+
 export type Theme = "lemonade" | "dim";
 
 export type User = {

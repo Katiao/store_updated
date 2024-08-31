@@ -24,7 +24,7 @@ export const action =
       cartItems,
       numItemsInCart,
     };
-    
+
     try {
       const response = await customFetch.post(
         "/orders",
@@ -45,8 +45,12 @@ export const action =
         // @ts-ignore
         error?.response?.data?.error?.message ||
         "there was an error placing your order";
-
       toast.error(errorMessage);
+      // in case JWT token is invalid or missing
+      // TODO: handle error type
+      // @ts-ignore
+      if (error?.response?.status === 401 || 403) return redirect("/login");
+
       return null;
     }
   };
