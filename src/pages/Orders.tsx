@@ -9,9 +9,10 @@ import {
 import { RootState } from "../store";
 import { Store } from "@reduxjs/toolkit";
 import { OrderHistoryApiResponse } from "../types";
+import { QueryClient } from "@tanstack/react-query";
 
 export const loader =
-  (store: Store<RootState>) =>
+  (store: Store<RootState>, queryClient: QueryClient) =>
   async ({ request }: ActionFunctionArgs) => {
     const user = store.getState().userState.user;
 

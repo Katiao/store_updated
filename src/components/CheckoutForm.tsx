@@ -6,9 +6,10 @@ import { customFetch, formatPrice } from "../utils";
 import { clearCart } from "../features/cart/cartSlice";
 import { FormInput } from "./FormInput";
 import { SubmitBtn } from "./SubmitBtn";
+import { QueryClient } from "@tanstack/react-query";
 
 export const action =
-  (store: Store<RootState>) =>
+  (store: Store<RootState>, queryClient: QueryClient) =>
   async ({ request }: ActionFunctionArgs) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);

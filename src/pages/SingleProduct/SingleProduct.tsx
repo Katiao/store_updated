@@ -6,11 +6,27 @@ import { useState } from "react";
 
 import type { Product, CartProduct } from "../../types";
 import { CartButton, Amount, Breadcrumbs, ProductInfo } from "./components";
+import { QueryClient } from "@tanstack/react-query";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const response = await customFetch(`/products/${params.id}`);
-  return { product: response.data.data };
+const singleProductQuery = (id: string) => {
+  return {
+    queryKey: ["singleProduct", id],
+    queryFn: () => customFetch.get(`/products/${id}`),
+  };
 };
+
+export const loader =
+  (queryClient: QueryClient) =>
+  async ({ params }: LoaderFunctionArgs) => {
+    if (!params.id) {
+      throw new Error("Product ID is not defined");
+    }
+
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(params.id)
+    );
+    return { product: response.data.data };
+  };
 
 export const SingleProduct = () => {
   const { product } = useLoaderData() as { product: Product };

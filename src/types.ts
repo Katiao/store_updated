@@ -34,8 +34,7 @@ export type ProductsMeta = {
 
 export type Products = Product[];
 
-// if not used delete
-type Pagination = {
+export type Pagination = {
   page: number;
   pageSize: number;
   pageCount: number;
