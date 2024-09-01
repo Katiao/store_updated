@@ -8,8 +8,29 @@ import {
 } from "../components";
 import { RootState } from "../store";
 import { Store } from "@reduxjs/toolkit";
-import { OrderHistoryApiResponse } from "../types";
+import { OrderHistoryApiResponse, User } from "../types";
 import { QueryClient } from "@tanstack/react-query";
+
+type FlexibleParams = { page?: string } & {
+  [k: string]: string | number;
+};
+
+export const ordersQuery = (params: FlexibleParams, user: User) => {
+  return {
+    queryKey: [
+      "orders",
+      user.username,
+      params.page ? parseInt(params.page) : 1,
+    ],
+    queryFn: () =>
+      customFetch.get("/orders", {
+        params,
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }),
+  };
+};
 
 export const loader =
   (store: Store<RootState>, queryClient: QueryClient) =>
@@ -26,17 +47,9 @@ export const loader =
       ...new URL(request.url).searchParams.entries(),
     ]);
     try {
-      const response = await customFetch.get<OrderHistoryApiResponse>(
-        "/orders",
-        {
-          params,
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
+      const response = await queryClient.ensureQueryData(
+        ordersQuery(params, user)
       );
-
-      console.log("response.data", response.data);
 
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error) {

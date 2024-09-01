@@ -36,6 +36,7 @@ export const action =
           },
         }
       );
+      queryClient.removeQueries(["orders"]);
       store.dispatch(clearCart());
       toast.success("order placed successfully");
       return redirect("/orders");

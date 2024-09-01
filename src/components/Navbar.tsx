@@ -22,11 +22,8 @@ export const Navbar = () => {
       <div className="navbar align-element ">
         <div className="navbar-start">
           {/* Title */}
-          <NavLink
-            to="/"
-            className="hidden lg:flex btn btn-primary text-3xl items-center "
-          >
-            C
+          <NavLink to="/" className="w-12 h-12">
+            <img src="src/assets/logo.png" alt="Logo" />
           </NavLink>
 
           {/* DROPDOWN */}
