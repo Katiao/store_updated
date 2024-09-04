@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Eco-Friendly T-Shirt",
+    "company": "Verdant",
+    "description": "Made from 100% organic cotton, this comfortable t-shirt is perfect for everyday wear.",
+    "featured": true,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 29.99,
+    "shipping": true
+  },
+  {
+    "title": "Recycled Denim Jeans",
+    "company": "Ecoture",
+    "description": "These stylish jeans are made from recycled denim, reducing waste and looking great.",
+    "featured": false,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 89.99,
+    "shipping": true
+  },
+  {
+    "title": "Bamboo Socks Set",
+    "company": "Gaia",
+    "description": "A set of 3 pairs of comfortable, breathable socks made from sustainable bamboo fiber.",
+    "featured": false,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 19.99,
+    "shipping": false
+  },
+  {
+    "title": "Hemp Backpack",
+    "company": "Aether",
+    "description": "Durable and eco-friendly backpack made from hemp, perfect for daily use or short trips.",
+    "featured": true,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 59.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Cotton Dress",
+    "company": "Zephyr",
+    "description": "A beautiful, flowing dress made from organic cotton, suitable for various occasions.",
+    "featured": true,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 79.99,
+    "shipping": true
+  },
+  {
+    "title": "Recycled Polyester Jacket",
+    "company": "Verdant",
+    "description": "Warm and water-resistant jacket made from recycled polyester, perfect for outdoor activities.",
+    "featured": false,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 129.99,
+    "shipping": true
+  },
+  {
+    "title": "Sustainable Kids' Pajama Set",
+    "company": "Ecoture",
+    "description": "Soft and cozy pajama set for children, made from sustainable materials.",
+    "featured": false,
+    "category": "Children",
+    "image": "/public/images/placeholder.jpg",
+    "price": 34.99,
+    "shipping": false
+  },
+  {
+    "title": "Eco-Leather Wallet",
+    "company": "Gaia",
+    "description": "Sleek wallet made from eco-friendly, plant-based leather alternative.",
+    "featured": true,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 49.99,
+    "shipping": false
+  },
+  {
+    "title": "Organic Linen Shirt",
+    "company": "Aether",
+    "description": "Breathable and stylish shirt made from organic linen, perfect for warm weather.",
+    "featured": false,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 69.99,
+    "shipping": true
+  }
+]
