@@ -88,5 +88,165 @@
     "image": "/public/images/placeholder.jpg",
     "price": 69.99,
     "shipping": true
+  },
+  {
+    "title": "Recycled Plastic Sunglasses",
+    "company": "Zephyr",
+    "description": "Stylish sunglasses made from recycled plastic, protecting your eyes and the environment.",
+    "featured": true,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 99.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Cotton Baby Onesie",
+    "company": "Verdant",
+    "description": "Soft and gentle onesie for babies, made from 100% organic cotton.",
+    "featured": false,
+    "category": "Children",
+    "image": "/public/images/placeholder.jpg",
+    "price": 24.99,
+    "shipping": false
+  },
+  {
+    "title": "Sustainable Yoga Pants",
+    "company": "Ecoture",
+    "description": "Comfortable and flexible yoga pants made from recycled materials.",
+    "featured": true,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 69.99,
+    "shipping": true
+  },
+  {
+    "title": "Cork Watch",
+    "company": "Gaia",
+    "description": "Elegant watch with a cork strap, a sustainable alternative to leather.",
+    "featured": false,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 119.99,
+    "shipping": true
+  },
+  {
+    "title": "Upcycled Denim Jacket",
+    "company": "Aether",
+    "description": "Unique jacket made from upcycled denim, giving new life to old materials.",
+    "featured": true,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 149.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Cotton Scarf",
+    "company": "Zephyr",
+    "description": "Soft and versatile scarf made from organic cotton, perfect for any season.",
+    "featured": false,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 39.99,
+    "shipping": false
+  },
+  {
+    "title": "Recycled Wool Sweater",
+    "company": "Verdant",
+    "description": "Warm and cozy sweater made from recycled wool, reducing textile waste.",
+    "featured": true,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 99.99,
+    "shipping": true
+  },
+  {
+    "title": "Sustainable Swim Shorts",
+    "company": "Ecoture",
+    "description": "Quick-drying swim shorts made from recycled ocean plastics.",
+    "featured": false,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 54.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Cotton Skirt",
+    "company": "Gaia",
+    "description": "Flowy and comfortable skirt made from organic cotton, suitable for various occasions.",
+    "featured": false,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 59.99,
+    "shipping": true
+  },
+  {
+    "title": "Bamboo Toddler Shirt",
+    "company": "Aether",
+    "description": "Soft and durable shirt for toddlers, made from sustainable bamboo fabric.",
+    "featured": true,
+    "category": "Children",
+    "image": "/public/images/placeholder.jpg",
+    "price": 29.99,
+    "shipping": false
+  },
+  {
+    "title": "Recycled Nylon Backpack",
+    "company": "Zephyr",
+    "description": "Durable and water-resistant backpack made from recycled nylon.",
+    "featured": false,
+    "category": "Accessories",
+    "image": "/public/images/placeholder.jpg",
+    "price": 79.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Hemp Hoodie",
+    "company": "Verdant",
+    "description": "Comfortable and eco-friendly hoodie made from a blend of organic cotton and hemp.",
+    "featured": true,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 84.99,
+    "shipping": true
+  },
+  {
+    "title": "Sustainable Denim Skirt",
+    "company": "Ecoture",
+    "description": "Stylish denim skirt made from sustainably sourced and recycled materials.",
+    "featured": false,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 69.99,
+    "shipping": true
+  },
+  {
+    "title": "Eco-Friendly Kids' Sneakers",
+    "company": "Gaia",
+    "description": "Comfortable and durable sneakers for kids, made with recycled and sustainable materials.",
+    "featured": true,
+    "category": "Children",
+    "image": "/public/images/placeholder.jpg",
+    "price": 49.99,
+    "shipping": true
+  },
+  {
+    "title": "Organic Linen Blazer",
+    "company": "Aether",
+    "description": "Elegant and breathable blazer made from organic linen, perfect for summer events.",
+    "featured": false,
+    "category": "Men",
+    "image": "/public/images/placeholder.jpg",
+    "price": 159.99,
+    "shipping": true
+  },
+  {
+    "title": "Recycled Polyester Raincoat",
+    "company": "Zephyr",
+    "description": "Waterproof and breathable raincoat made from recycled polyester, keeping you dry sustainably.",
+    "featured": true,
+    "category": "Women",
+    "image": "/public/images/placeholder.jpg",
+    "price": 119.99,
+    "shipping": true
   }
 ]
