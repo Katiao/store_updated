@@ -4,7 +4,7 @@ import express from "express";
 import "express-async-errors";
 import { errorHandlerMiddleware, notFound } from "./middleware";
 import connectDB from "./db/connect";
-import productsRouter from "./routes/products";
+import { productsRouter, authRouter } from "./routes";
 
 dotenv.config();
 const app = express();
@@ -12,14 +12,15 @@ const app = express();
 //middleware
 app.use(express.json());
 
-//routes
 app.get("/", (req, res) => {
   res.send("<h1>Store API</h1><a href='/api/v1/products'>Products route</a>");
 });
 
+//routes
 app.use("/api/v1/products", productsRouter);
+app.use("/api/v1/auth", authRouter);
 
-// products routes
+// error handling middleware
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
