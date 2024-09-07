@@ -2,9 +2,9 @@ import dotenv from "dotenv";
 import express from "express";
 // takes care of async errors so that we don't need to use try catch blocks
 import "express-async-errors";
-import { errorHandlerMiddleware, notFound } from "./middleware";
+import { errorHandlerMiddleware, notFound, authenticateUser } from "./middleware";
 import connectDB from "./db/connect";
-import { productsRouter, authRouter } from "./routes";
+import { productsRouter, authRouter, ordersRouter } from "./routes";
 
 dotenv.config();
 const app = express();
@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 //routes
 app.use("/api/v1/products", productsRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/orders",authenticateUser, ordersRouter);
 
 // error handling middleware
 

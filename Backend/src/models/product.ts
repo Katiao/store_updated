@@ -12,10 +12,11 @@ interface IProduct extends Document {
   image: string;
   price: number;
   shipping: boolean;
-  colors: string[];
 }
 
-const productSchema = new Schema<IProduct>(
+// TODO: check required parts
+
+const ProductSchema = new Schema<IProduct>(
   {
     title: {
       type: String,
@@ -63,4 +64,4 @@ const productSchema = new Schema<IProduct>(
   }
 );
 
-export default mongoose.model<IProduct>("Product", productSchema);
+export default mongoose.model<IProduct>("Product", ProductSchema);
