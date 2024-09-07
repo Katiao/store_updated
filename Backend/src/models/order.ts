@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-interface ICartItem {
+export interface ICartItem {
   cartID: number;
   productID: number;
   amount: number;
@@ -10,7 +10,7 @@ interface ICartItem {
   title: string;
 }
 
-interface IOrderData {
+export interface IOrderData {
   name: string;
   address: string;
   chargeTotal: number;
@@ -19,15 +19,12 @@ interface IOrderData {
   cartItems: ICartItem[];
 }
 
-interface IOrder extends Document {
+export interface IOrder extends Document {
+  userId: mongoose.Types.ObjectId;
   data: IOrderData;
 }
 
 const CartItemSchema = new Schema<ICartItem>({
-  cartID: {
-    type: Number,
-    required: [true, "Cart ID must be provided"],
-  },
   productID: {
     type: Number,
     required: [true, "Product ID must be provided"],
@@ -57,6 +54,11 @@ const CartItemSchema = new Schema<ICartItem>({
 
 const OrderSchema = new Schema<IOrder>(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, 'User ID is required']
+    },
     data: {
       name: {
         type: String,
@@ -78,6 +80,10 @@ const OrderSchema = new Schema<IOrder>(
         type: Number,
         required: [true, "Number of items in cart must be provided"],
         min: [1, "Number of items must be at least 1"],
+      },
+      cartID: {
+        type: Number,
+        required: [true, "Cart ID must be provided"],
       },
       cartItems: {
         type: [CartItemSchema],
