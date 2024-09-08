@@ -15,16 +15,8 @@ type QueryObject = {
 const PAGE_SIZE = 10;
 
 const getAllProducts = async (req: Request, res: Response) => {
-  const {
-    featured,
-    company,
-    search,
-    order,
-    category,
-    price,
-    shipping,
-    page,
-  } = req.query;
+  const { featured, company, search, order, category, price, shipping, page } =
+    req.query;
 
   const queryObject: QueryObject = {};
 
@@ -83,13 +75,15 @@ const getAllProducts = async (req: Request, res: Response) => {
   const pageCount = Math.ceil(totalProducts / PAGE_SIZE);
 
   res.status(200).json({
-    products,
-    nbHits: products.length,
-    pagination: {
-      page: pageNumber,
-      pageSize: PAGE_SIZE,
-      pageCount: pageCount,
-      total: totalProducts,
+    data: products,
+    meta: {
+      nbHits: products.length,
+      pagination: {
+        page: pageNumber,
+        pageSize: PAGE_SIZE,
+        pageCount: pageCount,
+        total: totalProducts,
+      },
     },
   });
 };
@@ -97,7 +91,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 const getProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
   const product = await Product.findById(id).lean().exec();
-  
+
   if (!product) {
     throw new Error("Product not found");
   }

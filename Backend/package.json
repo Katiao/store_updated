@@ -9,7 +9,8 @@
     "build": "tsc",
     "serve": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "populate": "node --loader ts-node/esm src/populate.ts"
+    "populateProducts": "node --loader ts-node/esm src/populateProducts.ts",
+    "populateOrders": "node --loader ts-node/esm src/populateOrders.ts"
   },
   "keywords": [],
   "author": "",
