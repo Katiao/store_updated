@@ -1,5 +1,10 @@
 import dotenv from "dotenv";
 import express from "express";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
+import ExpressMongoSanitize from "express-mongo-sanitize";
+import cors from "cors";
+
 // takes care of async errors so that we don't need to use try catch blocks
 import "express-async-errors";
 import { errorHandlerMiddleware, notFound, authenticateUser } from "./middleware";
@@ -10,6 +15,15 @@ dotenv.config();
 const app = express();
 
 //middleware
+app.set("trust proxy", 1);
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 60
+}));
+app.use(helmet());
+app.use(cors());
+app.use(ExpressMongoSanitize());
+
 app.use(express.json());
 
 app.get("/", (req, res) => {

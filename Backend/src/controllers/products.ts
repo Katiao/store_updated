@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 import Product from "../models/product";
+import { NotFoundError, BadRequestError } from "../errors";
 
 // Note, no try catch block as we are handing this in the error handler middleware and  "express-async-errors"
 
@@ -90,13 +92,22 @@ const getAllProducts = async (req: Request, res: Response) => {
 
 const getProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const product = await Product.findById(id).lean().exec();
 
-  if (!product) {
-    throw new Error("Product not found");
+  // Convert id to number since productID is likely a number
+  const productID = Number(id);
+
+  // Check if the conversion resulted in a valid number
+  if (isNaN(productID)) {
+    throw new BadRequestError("Invalid product ID");
   }
 
-  res.status(200).json({ product });
+  const product = await Product.findOne({ productID }).lean();
+
+  if (!product) {
+    throw new NotFoundError(`No product found with ID ${productID}`);
+  }
+
+  res.status(StatusCodes.OK).json({ product });
 };
 
 export { getAllProducts, getProduct };
