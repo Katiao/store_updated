@@ -37,8 +37,8 @@ const getAllProducts = async (req: Request, res: Response) => {
   if (price && typeof price === "string") {
     queryObject.price = { $lte: Number(price) };
   }
-  if (shipping) {
-    queryObject.shipping = shipping === "true";
+  if (shipping === "on") {
+    queryObject.shipping = true;
   }
 
   let result = Product.find(queryObject);

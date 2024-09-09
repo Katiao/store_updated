@@ -3,15 +3,17 @@ import { FormInput } from "./FormInput";
 import { FormSelect } from "./FormSelect";
 import { FormRange } from "./FormRange";
 import { FormCheckbox } from "./FormCheckbox";
-import { ProductsMeta, SearchAndFilterParams } from "../types";
+import { SearchAndFilterParams } from "../types";
+import { companies, categories } from "../consts";
 
 export const Filters = () => {
   // create params type
-  const { meta, params } = useLoaderData() as {
-    meta: ProductsMeta;
+  const { params } = useLoaderData() as {
     params: SearchAndFilterParams;
   };
   const { search, company, category, shipping, order, price } = params;
+
+  console.log("params", params);
 
   return (
     <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
@@ -27,7 +29,7 @@ export const Filters = () => {
       <FormSelect
         label="select category"
         name="category"
-        list={meta.categories}
+        list={categories}
         size="select-sm"
         defaultValue={category}
       />
@@ -35,7 +37,7 @@ export const Filters = () => {
       <FormSelect
         label="select company"
         name="company"
-        list={meta.companies}
+        list={companies}
         size="select-sm"
         defaultValue={company}
       />
@@ -59,7 +61,7 @@ export const Filters = () => {
         name="shipping"
         label="free shipping"
         size="checkbox-sm"
-        defaultValue={shipping}
+        defaultValue={shipping === "on"}
       />
       {/* BUTTONS */}
       <button type="submit" className="btn btn-primary btn-sm">

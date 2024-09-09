@@ -19,7 +19,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   try {
     const response = await customFetch.post("/auth/local/register", data);
     toast.success("account created successfully");
-    console.log("response", response);
     return redirect("/login");
   } catch (error) {
     // TODO: handle error type better

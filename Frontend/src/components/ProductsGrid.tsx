@@ -11,13 +11,13 @@ export const ProductsGrid = () => {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
       {products.map((product) => {
-        const { title, price, image } = product.attributes;
+        const { title, price, image } = product;
         const dollarsAmount = formatPrice(price);
 
         return (
           <Link
-            key={product.id}
-            to={`/products/${product.id}`}
+            key={product.productID}
+            to={`/products/${product.productID}`}
             className="card w-full  shadow-xl hover:shadow-2xl transition duration-300 "
           >
             <figure className="px-4 pt-4">

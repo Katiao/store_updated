@@ -1,35 +1,32 @@
+export type Category = "Women" | "Men" | "Children" | "Accessories";
+
+export type Company = "Verdant" | "Ecoture" | "Gaia" | "Aether" | "Zephyr";
+
 // if not used delete
 export type ProductApiResponse = {
   data: Product[];
   meta: ProductsMeta;
 };
 
-export type Product = {
-  id: number;
-  attributes: ProductAttributes;
-};
-
 // if not used delete
-type ProductAttributes = {
+export type Product = {
   title: string;
-  company: string;
+  company: Company;
   description: string;
   featured: boolean;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  category: string;
+  category: Category;
   image: string;
   price: string;
-  shipping: boolean;
-  colors: string[];
+  shipping?: "on";
+  productID: number;
 };
 
-// possibly enum for categories and companies
 export type ProductsMeta = {
   pagination: Pagination;
-  categories: string[];
-  companies: string[];
+  nbHits: number;
 };
 
 export type Products = Product[];
@@ -42,7 +39,7 @@ export type Pagination = {
 };
 
 export type SearchAndFilterParams = Pick<
-  ProductAttributes,
+  Product,
   "company" | "category" | "shipping" | "price"
 > & {
   search: string;

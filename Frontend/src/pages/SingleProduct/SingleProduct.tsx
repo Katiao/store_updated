@@ -25,12 +25,12 @@ export const loader =
     const response = await queryClient.ensureQueryData(
       singleProductQuery(params.id)
     );
-    return { product: response.data.data };
+    return { product: response.data.product };
   };
 
 export const SingleProduct = () => {
   const { product } = useLoaderData() as { product: Product };
-  const { image, title, price, description, company } = product.attributes;
+  const { image, title, price, description, company } = product;
   const dollarsAmount = formatPrice(price);
 
   const [amount, setAmount] = useState(1);
@@ -38,8 +38,8 @@ export const SingleProduct = () => {
 
   const cartProduct: CartProduct = {
     // cart ID probably will not be needed anymore as I removed color
-    cartID: product.id,
-    productID: product.id,
+    cartID: product.productID,
+    productID: product.productID,
     image,
     title,
     price,

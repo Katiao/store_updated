@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const productionUrl = "https://strapi-store-server.onrender.com/api";
+const devURL = "http://localhost:3000/api/v1";
+// const productionUrl = "https://strapi-store-server.onrender.com/api";
 
 export const customFetch = axios.create({
-  baseURL: productionUrl,
+  baseURL: devURL,
 });
 
 export const formatPrice = (price: string) => {

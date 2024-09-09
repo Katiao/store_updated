@@ -9,13 +9,13 @@ export const ProductsList = () => {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { title, price, image, company } = product.attributes;
+        const { title, price, image, company } = product;
         const dollarsAmount = formatPrice(price);
 
         return (
           <Link
-            key={product.id}
-            to={`/products/${product.id}`}
+            key={product.productID}
+            to={`/products/${product.productID}`}
             className="p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group"
           >
             <img
