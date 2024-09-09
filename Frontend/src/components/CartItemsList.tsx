@@ -10,7 +10,7 @@ export const CartItemsList = () => {
   return (
     <div>
       {cartItems.map((item) => {
-        return <CartItem key={item.cartID} cartItem={item} />;
+        return <CartItem key={item.productID} cartItem={item} />;
       })}
     </div>
   );

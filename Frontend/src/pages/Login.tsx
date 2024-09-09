@@ -18,15 +18,17 @@ export const action =
   (store: Store<RootState>) =>
   async ({ request }: ActionFunctionArgs) => {
     const formData = await request.formData();
-    const data = Object.fromEntries(formData);
+    const { identifier, password } = Object.fromEntries(formData);
     try {
-      const response = await customFetch.post("/auth/local", data);
+      const response = await customFetch.post("/auth", {
+        email: identifier,
+        password: password,
+      });
 
       store.dispatch(loginUser(response.data));
       toast.success("logged in successfully");
       return redirect("/");
     } catch (error) {
-      console.log(error);
       const errorMessage =
         // TODO: handle error type
         // @ts-ignore
@@ -44,8 +46,8 @@ export const Login = () => {
 
   const loginAsGuestUser = async () => {
     try {
-      const response = await customFetch.post("/auth/local", {
-        identifier: "test@test.com",
+      const response = await customFetch.post("/auth", {
+        email: "test@test.com",
         password: "secret",
       });
       dispatch(loginUser(response.data));

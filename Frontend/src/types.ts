@@ -47,8 +47,6 @@ export type SearchAndFilterParams = Pick<
 };
 
 export type CartProduct = {
-  // cart ID probably will not be needed anymore as I removed color
-  cartID: number;
   productID: number;
   image: string;
   title: string;
@@ -90,13 +88,6 @@ export type OrderHistoryApiResponse = {
 export type Theme = "lemonade" | "dim";
 
 export type User = {
-  id: number;
-  username: string;
-  email: string;
-  provider: string;
-  confirmed: boolean;
-  blocked: boolean;
-  createdAt: string;
-  updatedAt: string;
+  name: string;
   token: string;
 };

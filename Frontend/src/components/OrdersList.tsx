@@ -27,7 +27,7 @@ export const OrdersList = () => {
               <th className="hidden sm:block">Date</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {orders.map((order) => {
               const id = order.id;
               const { name, address, numItemsInCart, orderTotal, createdAt } =
@@ -44,7 +44,7 @@ export const OrdersList = () => {
                 </tr>
               );
             })}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     </div>

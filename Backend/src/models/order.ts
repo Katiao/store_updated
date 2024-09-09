@@ -56,8 +56,8 @@ const OrderSchema = new Schema<IOrder>(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'User ID is required']
+      ref: "User",
+      required: [true, "User ID is required"],
     },
     data: {
       name: {
@@ -81,10 +81,6 @@ const OrderSchema = new Schema<IOrder>(
         required: [true, "Number of items in cart must be provided"],
         min: [1, "Number of items must be at least 1"],
       },
-      cartID: {
-        type: Number,
-        required: [true, "Cart ID must be provided"],
-      },
       cartItems: {
         type: [CartItemSchema],
         required: true,
@@ -97,9 +93,14 @@ const OrderSchema = new Schema<IOrder>(
           },
           {
             validator: function (items: ICartItem[]) {
-              return items && items.length === this.data.numItemsInCart;
+              const totalItems = items.reduce(
+                (sum, item) => sum + item.amount,
+                0
+              );
+              return totalItems === this.data.numItemsInCart;
             },
-            message: "Number of cart items must match numItemsInCart",
+            message:
+              "Total number of items (including amounts) must match numItemsInCart",
           },
         ],
       },

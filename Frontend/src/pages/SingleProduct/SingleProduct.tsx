@@ -37,8 +37,6 @@ export const SingleProduct = () => {
   const dispatch = useDispatch();
 
   const cartProduct: CartProduct = {
-    // cart ID probably will not be needed anymore as I removed color
-    cartID: product.productID,
     productID: product.productID,
     image,
     title,

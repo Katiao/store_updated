@@ -43,8 +43,9 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<Payload>) => {
       const { product } = action.payload;
-      // replace with product.productID?
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
+      const item = state.cartItems.find(
+        (i) => i.productID === product.productID
+      );
       if (item) {
         item.amount += product.amount;
       } else {
@@ -61,9 +62,11 @@ const cartSlice = createSlice({
     },
 
     removeItem: (state, action) => {
-      const { cartID } = action.payload;
-      const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+      const { productID } = action.payload;
+      const product = state.cartItems.find((i) => i.productID === productID);
+      state.cartItems = state.cartItems.filter(
+        (i) => i.productID !== productID
+      );
 
       state.numItemsInCart -= product!.amount;
       state.cartTotal -= Number(product!.price) * product!.amount;
@@ -72,8 +75,8 @@ const cartSlice = createSlice({
     },
 
     editItem: (state, action) => {
-      const { cartID, amount } = action.payload;
-      const item = state.cartItems.find((i) => i.cartID === cartID);
+      const { productID, amount } = action.payload;
+      const item = state.cartItems.find((i) => i.productID === productID);
       state.numItemsInCart += amount - item!.amount;
       state.cartTotal += Number(item!.price) * (amount - item!.amount);
       item!.amount = amount;
