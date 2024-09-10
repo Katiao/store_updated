@@ -19,7 +19,7 @@ export const ordersQuery = (params: FlexibleParams, user: User) => {
   return {
     queryKey: [
       "orders",
-      user.username,
+      user.name,
       params.page ? parseInt(params.page) : 1,
     ],
     queryFn: () =>
@@ -50,6 +50,8 @@ export const loader =
       const response = await queryClient.ensureQueryData(
         ordersQuery(params, user)
       );
+
+      console.log('response',response);
 
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error) {

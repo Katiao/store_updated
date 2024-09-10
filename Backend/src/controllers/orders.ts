@@ -18,15 +18,14 @@ export const getOrdersHistory = async (
   const pageNumber = Number(page) || 1;
   const skip = (pageNumber - 1) * PAGE_SIZE;
 
-  let result = Order.find({ userId: req?.user?.userId }).sort({
-    createdAt: -1,
-  });
-
-  // Apply pagination
-  result = result.skip(skip).limit(PAGE_SIZE);
-
-  // Execute the query
-  const orders = await result;
+  const orders = await Order.find(
+    { userId: req?.user?.userId },
+    { userId: 0, __v: 0 }
+  )
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(PAGE_SIZE)
+    .lean(); // Use lean() for better performance as we don't need Mongoose documents
 
   // Get total count for pagination info
   const totalOrders = await Order.countDocuments({ userId: req?.user?.userId });

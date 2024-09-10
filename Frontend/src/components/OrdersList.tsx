@@ -27,15 +27,15 @@ export const OrdersList = () => {
               <th className="hidden sm:block">Date</th>
             </tr>
           </thead>
-          {/* <tbody>
+           <tbody>
             {orders.map((order) => {
-              const id = order.id;
-              const { name, address, numItemsInCart, orderTotal, createdAt } =
-                order.attributes;
+              const { _id, createdAt } = order;
+              const { name, address, numItemsInCart, orderTotal } =
+                order.data;
 
               const date = day(createdAt).format("hh:mm a - MMM Do, YYYY ");
               return (
-                <tr key={id}>
+                <tr key={_id}>
                   <td>{name}</td>
                   <td>{address}</td>
                   <td>{numItemsInCart}</td>
@@ -44,7 +44,7 @@ export const OrdersList = () => {
                 </tr>
               );
             })}
-          </tbody> */}
+          </tbody> 
         </table>
       </div>
     </div>

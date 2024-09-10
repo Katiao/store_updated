@@ -55,23 +55,24 @@ export type CartProduct = {
   company: string;
 };
 
-type OrderAttributes = {
-  address: string;
-  cartItems: CartProduct[];
-  createdAt: string;
+export type OrderData = {
   name: string;
-  numItemsInCart: number;
+  address: string;
+  chargeTotal: number;
   orderTotal: string;
-  publishedAt: string;
-  updatedAt: string;
+  numItemsInCart: number;
+  cartItems: CartProduct[];
 };
 
 export type OrderHistoryItem = {
-  id: number;
-  attributes: OrderAttributes;
+  _id: string; // Using the MongoDB _id as the id
+  data: OrderData;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OrderHistoryMeta = {
+  nbHits: number;
   pagination: {
     page: number;
     pageCount: number;
