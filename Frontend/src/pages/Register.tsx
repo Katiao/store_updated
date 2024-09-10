@@ -17,7 +17,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const data = Object.fromEntries(formData) as RegisterFormData;
 
   try {
-    const response = await customFetch.post("/auth/local/register", data);
+    await customFetch.post("/auth/register", data);
     toast.success("account created successfully");
     return redirect("/login");
   } catch (error) {
@@ -44,7 +44,7 @@ export const Register = () => {
       >
         <h4 className="text-center text-3xl font-bold">Register</h4>
 
-        <FormInput type="text" label="username" name="username" />
+        <FormInput type="text" label="name" name="name" />
         <FormInput type="email" label="email" name="email" />
         <FormInput type="password" label="password" name="password" />
 

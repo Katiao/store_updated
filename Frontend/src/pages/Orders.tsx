@@ -17,11 +17,7 @@ type FlexibleParams = { page?: string } & {
 
 export const ordersQuery = (params: FlexibleParams, user: User) => {
   return {
-    queryKey: [
-      "orders",
-      user.name,
-      params.page ? parseInt(params.page) : 1,
-    ],
+    queryKey: ["orders", user.name, params.page ? parseInt(params.page) : 1],
     queryFn: () =>
       customFetch.get("/orders", {
         params,
@@ -50,8 +46,6 @@ export const loader =
       const response = await queryClient.ensureQueryData(
         ordersQuery(params, user)
       );
-
-      console.log('response',response);
 
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error) {
