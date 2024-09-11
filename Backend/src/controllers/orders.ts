@@ -2,13 +2,31 @@ import { Response } from "express";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 import { AuthenticatedRequest } from "../types";
-import Order, { IOrderData } from "../models/order";
+import Order, { ICartItem, IOrderData } from "../models/order";
 import Product from "../models/product";
 import { NotFoundError } from "../errors";
 
 // Note, no try catch block as we are handing this in the error handler middleware and  "express-async-errors"
 
 const PAGE_SIZE = 10;
+
+const TEST_USER_ID = '66e1b9613de3d424bede614a';
+
+const getRandomName = (): string => {
+  const names = ['John Doe', 'Jane Smith', 'Alex Johnson', 'Sam Brown', 'Chris Lee'];
+  return names[Math.floor(Math.random() * names.length)];
+};
+
+const getRandomAddress = (): string => {
+  const addresses = [
+    '123 Main St, Anytown, USA',
+    '456 Elm Ave, Somewhere, USA',
+    '789 Oak Rd, Nowhere, USA',
+    '321 Pine Ln, Everywhere, USA',
+    '654 Maple Dr, Anywhere, USA'
+  ];
+  return addresses[Math.floor(Math.random() * addresses.length)];
+};
 
 export const getOrdersHistory = async (
   req: AuthenticatedRequest,
@@ -45,12 +63,23 @@ export const getOrdersHistory = async (
   });
 };
 
+
 export const createOrder = async (req: AuthenticatedRequest, res: Response) => {
-  const orderData: IOrderData = req.body.data;
+  let orderData: IOrderData = req.body.data;
   const { cartItems } = orderData;
 
+  // Check if the user is using the test account
+  if (req?.user?.userId === TEST_USER_ID) {
+    // Overwrite name and address with random values
+    orderData = {
+      ...orderData,
+      name: getRandomName(),
+      address: getRandomAddress()
+    };
+  }
+
   // Check if all products in the order exist
-  const productIDs = cartItems.map((item) => item.productID);
+  const productIDs = cartItems.map((item: ICartItem) => item.productID);
   const existingProducts = await Product.find({
     productID: { $in: productIDs },
   });
@@ -72,7 +101,7 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response) => {
     userId: new mongoose.Types.ObjectId(req?.user?.userId),
     data: orderData,
   });
-  await newOrder.save();
 
+  await newOrder.save();
   res.status(StatusCodes.CREATED).json(newOrder);
 };
