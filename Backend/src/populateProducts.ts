@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-import connectDB from './db/connect';
-import Product from './models/product';
-import jsonProducts from '../products.json' assert { type: "json" };
+import dotenv from "dotenv";
+import connectDB from "./db/connect";
+import Product from "./models/product";
+import jsonProducts from "../products.json" assert { type: "json" };
 import OpenAI from "openai";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -25,12 +25,16 @@ interface ProductDetails {
   description: string;
 }
 
-async function generateAndUploadImage(productDetails: ProductDetails): Promise<string> {
+async function generateAndUploadImage(
+  productDetails: ProductDetails
+): Promise<string> {
   try {
-    // Construct a more detailed prompt
-    const basePrompt = `Create a realistic product photo for an e-commerce site. The image should be a ${productDetails.category} product: ${productDetails.title}. ${productDetails.description}`;
-    const styleGuidance = "The image should be a high-quality, professional product photograph. It should look realistic, not illustrated or cartoon-like. The product should be well-lit, in focus, and displayed against a plain or contextually appropriate background.";
-    const fullPrompt = `${basePrompt} ${styleGuidance}`;
+    const basePrompt = `Create a single, realistic product photo for an e-commerce site. The image must show only one ${productDetails.category} product: ${productDetails.title}. ${productDetails.description}`;
+    const styleGuidance =
+      "The image must be a high-quality, professional product photograph of exactly one item. Do not show multiple items, variations, or angles. Show only the front view of the single product. It should look realistic, not illustrated or cartoon-like. The single product should be well-lit, in focus, and displayed against a plain or contextually appropriate background. Ensure that only one product is visible in the entire image.";
+    const emphasizeGuidance =
+      "It is crucial that only one single product appears in the image. Do not include any other items, props, or variations of the product. The image should focus entirely on this one item.";
+    const fullPrompt = `${basePrompt} ${styleGuidance} ${emphasizeGuidance}`;
 
     // Generate image using DALL-E
     const response = await openai.images.generate({
@@ -39,7 +43,7 @@ async function generateAndUploadImage(productDetails: ProductDetails): Promise<s
       n: 1,
       size: "1024x1024",
       quality: "standard",
-      style: "natural" 
+      style: "natural",
     });
 
     const imageUrl = response.data[0].url;
@@ -71,7 +75,7 @@ const start = async () => {
       const imageUrl = await generateAndUploadImage({
         category: product.category,
         title: product.title,
-        description: product.description
+        description: product.description,
       });
 
       // Create product with new image URL
