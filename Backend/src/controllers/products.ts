@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import Product from "../models/product";
-import { NotFoundError, BadRequestError } from "../errors";
+import Product from "../models/product.js";
+import NotFoundError from "../errors/notFound.js";
+import BadRequestError from "../errors/badRequest.js";
 
 // Note, no try catch block as we are handing this in the error handler middleware and  "express-async-errors"
 

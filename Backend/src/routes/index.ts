@@ -1,5 +1,5 @@
-import productsRouter from "./products";
-import authRouter from "./auth";
-import ordersRouter from "./orders";
+import productsRouter from "./products.js";
+import authRouter from "./auth.js";
+import ordersRouter from "./orders.js";
 
 export { productsRouter, authRouter, ordersRouter };

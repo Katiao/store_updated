@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import connectDB from "./db/connect";
-import Order from "./models/order";
+import connectDB from "./db/connect.js";
+import Order from "./models/order.js";
 import jsonOrders from "../orders.json" assert { type: "json" };
 
 dotenv.config();

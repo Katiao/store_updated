@@ -1,13 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "node --loader ts-node/esm src/app.ts",
+    "start": "node dist/app.js",
     "dev": "nodemon --exec node --loader ts-node/esm src/app.ts",
     "build": "tsc",
-    "serve": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "populateProducts": "node --loader ts-node/esm src/populateProducts.ts",
     "populateOrders": "node --loader ts-node/esm src/populateOrders.ts"

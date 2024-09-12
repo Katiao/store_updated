@@ -1,10 +1,10 @@
 import { Response } from "express";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
-import { AuthenticatedRequest } from "../types";
-import Order, { ICartItem, IOrderData } from "../models/order";
-import Product from "../models/product";
-import { NotFoundError } from "../errors";
+import { AuthenticatedRequest } from "../types.js";
+import Order, { ICartItem, IOrderData } from "../models/order.js";
+import Product from "../models/product.js";
+import NotFoundError  from "../errors/notFound.js";
 
 // Note, no try catch block as we are handing this in the error handler middleware and  "express-async-errors"
 

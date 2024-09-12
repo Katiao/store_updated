@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 import { Response, NextFunction } from "express";
-import { UnauthenticatedError } from "../errors";
-import { AuthenticatedRequest } from "../types";
+import UnauthenticatedError from "../errors/unauthenticated.js";
+import { AuthenticatedRequest } from "../types.js";
 
-export const authenticateUser = async (
+const authenticateUser = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
@@ -27,3 +27,5 @@ export const authenticateUser = async (
     throw new UnauthenticatedError("Authentication invalid");
   }
 };
+
+export default authenticateUser;

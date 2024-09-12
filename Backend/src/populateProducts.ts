@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
-import connectDB from "./db/connect";
-import Product from "./models/product";
-import jsonProducts from "../products.json" assert { type: "json" };
 import OpenAI from "openai";
 import { v2 as cloudinary } from "cloudinary";
+import connectDB from "./db/connect.js";
+import Product from "./models/product.js";
+import jsonProducts from "../products.json" assert { type: "json" };
 
 dotenv.config();
 

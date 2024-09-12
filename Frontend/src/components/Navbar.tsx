@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../features/user/userSlice";
 import { NavLinks } from "./Navlinks";
 import { RootState } from "../store";
+import logo from "../../public/logo.jpg";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export const Navbar = () => {
         <div className="navbar-start">
           {/* Title */}
           <NavLink to="/" className="w-12 h-12">
-            <img src="src/assets/logo.png" alt="Logo" />
+            <img src={logo} alt="Logo" />
           </NavLink>
 
           {/* DROPDOWN */}

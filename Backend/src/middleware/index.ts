@@ -1,6 +1,3 @@
-import {errorHandlerMiddleware} from "./error-handler";
-import {notFound} from "./not-found";
-import {authenticateUser} from "./authentication";
-
-
-export { errorHandlerMiddleware, notFound, authenticateUser };
+export { default as errorHandlerMiddleware } from './errorHandler.js';
+export { default as notFound } from './notFound.js';
+export { default as authenticateUser } from './authentication.js';

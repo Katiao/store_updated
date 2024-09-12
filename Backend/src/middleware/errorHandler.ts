@@ -19,7 +19,7 @@ interface CastError extends MongooseError {
   value: string;
 }
 
-export const errorHandlerMiddleware: ErrorRequestHandler = (err, req, res, next) => {
+ const errorHandlerMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   let customError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || 'Something went wrong try again later',
@@ -49,3 +49,5 @@ export const errorHandlerMiddleware: ErrorRequestHandler = (err, req, res, next)
 
   return res.status(customError.statusCode).json({ msg: customError.msg });
 };
+
+export default errorHandlerMiddleware;
