@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../features/user/userSlice";
 import { NavLinks } from "./Navlinks";
 import { RootState } from "../store";
-import logo from "../../public/logo.jpg";
+import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
