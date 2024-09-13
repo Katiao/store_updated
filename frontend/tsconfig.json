@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "es2020",
-    "module": "commonjs",
+    "target": "esNext",
+    "module": "esNext",
+    "moduleResolution": "Node",
+    "lib": ["DOM", "DOM.Iterable", "esNext"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "moduleResolution": "node"
+    "rootDir": "./src"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
