@@ -20,6 +20,7 @@ import authRouter from "./routes/auth.js";
 import ordersRouter from "./routes/orders.js";
 
 dotenv.config();
+
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -85,18 +86,29 @@ app.get("*", (req, res) => {
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = parseInt(process.env.PORT || "") || 10000; // Default to 10000 as per Render docs
+const host = process.env.HOST || '0.0.0.0';  // Default to 0.0.0.0 as per Render docs
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
 
-    app.listen(port, () => {
-      console.log(`Server is listening on port ${port}`);
+    app.listen(port, host, () => {
+      console.log(
+        `Server running in ${process.env.NODE_ENV || "development"} mode`
+      );
+      console.log(`Server is listening on http://${host}:${port}`);
     });
   } catch (error) {
-    console.log(error);
+    console.error("Failed to start the server:", error);
+    process.exit(1);
   }
 };
 
+// Start the server
 start();
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  process.exit(1);
+});
