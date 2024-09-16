@@ -38,22 +38,10 @@ app.use(
 );
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        imgSrc: [
-          "'self'",
-          "https://res.cloudinary.com",
-          "https://*.cloudinary.com",
-          "data:",
-        ],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        connectSrc: ["'self'", process.env.API_URL || "http://localhost:3000"],
-      },
-    },
+    contentSecurityPolicy: false, // Disable CSP
   })
 );
+
 app.use(cors());
 app.use(ExpressMongoSanitize());
 
@@ -78,7 +66,7 @@ app.use(notFound);
 app.use(errorHandlerMiddleware);
 
 const port = parseInt(process.env.PORT || "") || 10000; // Default to 10000 as per Render docs
-const host = process.env.HOST || '0.0.0.0';  // Default to 0.0.0.0 as per Render docs
+const host = process.env.HOST || "0.0.0.0"; // Default to 0.0.0.0 as per Render docs
 
 const start = async () => {
   try {
