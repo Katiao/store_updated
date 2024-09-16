@@ -27,21 +27,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 //middleware
-app.use((req, res, next) => {
-  const apiUrl = process.env.API_URL || "http://localhost:3000";
-  const cspHeader = `default-src 'self'; img-src 'self' https://res.cloudinary.com https://*.cloudinary.com data:; connect-src 'self' ${apiUrl};`;
-
-  res.setHeader("Content-Security-Policy", cspHeader);
-
-  console.log("CSP Header set:", cspHeader);
-
-  next();
-});
 app.set("trust proxy", 1);
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100,
+    max: 300,
     message:
       "Too many requests from this IP, please try again after 15 minutes",
   })
@@ -57,6 +47,8 @@ app.use(
           "https://*.cloudinary.com",
           "data:",
         ],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
         connectSrc: ["'self'", process.env.API_URL || "http://localhost:3000"],
       },
     },
@@ -82,7 +74,6 @@ app.get("*", (req, res) => {
 });
 
 // error handling middleware
-
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 

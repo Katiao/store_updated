@@ -4,26 +4,23 @@ import { StatusCodes } from "http-status-codes";
 import { AuthenticatedRequest } from "../types.js";
 import Order, { ICartItem, IOrderData } from "../models/order.js";
 import Product from "../models/product.js";
-import NotFoundError  from "../errors/notFound.js";
+import NotFoundError from "../errors/notFound.js";
 
 // Note, no try catch block as we are handing this in the error handler middleware and  "express-async-errors"
 
 const PAGE_SIZE = 10;
 
-const TEST_USER_ID = '66e1b9613de3d424bede614a';
+const TEST_USER_ID = "66e1b9613de3d424bede614a";
 
-const getRandomName = (): string => {
-  const names = ['John Doe', 'Jane Smith', 'Alex Johnson', 'Sam Brown', 'Chris Lee'];
-  return names[Math.floor(Math.random() * names.length)];
-};
+const TEST_USER_NAME = "Test User";
 
 const getRandomAddress = (): string => {
   const addresses = [
-    '123 Main St, Anytown, USA',
-    '456 Elm Ave, Somewhere, USA',
-    '789 Oak Rd, Nowhere, USA',
-    '321 Pine Ln, Everywhere, USA',
-    '654 Maple Dr, Anywhere, USA'
+    "123 Main St, Anytown, USA",
+    "456 Elm Ave, Somewhere, USA",
+    "789 Oak Rd, Nowhere, USA",
+    "321 Pine Ln, Everywhere, USA",
+    "654 Maple Dr, Anywhere, USA",
   ];
   return addresses[Math.floor(Math.random() * addresses.length)];
 };
@@ -63,7 +60,6 @@ export const getOrdersHistory = async (
   });
 };
 
-
 export const createOrder = async (req: AuthenticatedRequest, res: Response) => {
   let orderData: IOrderData = req.body.data;
   const { cartItems } = orderData;
@@ -73,8 +69,8 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response) => {
     // Overwrite name and address with random values
     orderData = {
       ...orderData,
-      name: getRandomName(),
-      address: getRandomAddress()
+      name: TEST_USER_NAME,
+      address: getRandomAddress(),
     };
   }
 
