@@ -38,7 +38,31 @@ app.use(
 );
 app.use(
   helmet({
-    contentSecurityPolicy: false, // Disable CSP
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: [
+          "'self'",
+          "*",
+          "data:",
+          "blob:",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+        ],
+        scriptSrc: [
+          "'self'",
+          "*",
+          "data:",
+          "blob:",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+        ],
+        connectSrc: ["'self'", "*"],
+        imgSrc: ["'self'", "*", "data:"],
+        styleSrc: ["'self'", "*", "'unsafe-inline'"],
+        fontSrc: ["'self'", "*", "data:"],
+        reportUri: "/report-csp-violation",
+      },
+    },
   })
 );
 
@@ -56,6 +80,11 @@ app.get("/", (req, res) => {
 app.use("/api/v1/products", productsRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/orders", authenticateUser, ordersRouter);
+// Add a route to handle CSP violation reports
+app.post("/report-csp-violation", (req, res) => {
+  console.log("CSP Violation:", req.body);
+  res.status(204).end();
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../../public", "index.html"));
