@@ -39,35 +39,7 @@ app.use(
       "Too many requests from this IP, please try again after 15 minutes",
   })
 );
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: [
-          "'self'",
-          "*",
-          "data:",
-          "blob:",
-          "'unsafe-inline'",
-          "'unsafe-eval'",
-        ],
-        scriptSrc: [
-          "'self'",
-          "*",
-          "data:",
-          "blob:",
-          "'unsafe-inline'",
-          "'unsafe-eval'",
-        ],
-        connectSrc: ["'self'", "*"],
-        imgSrc: ["'self'", "*", "data:"],
-        styleSrc: ["'self'", "*", "'unsafe-inline'"],
-        fontSrc: ["'self'", "*", "data:"],
-        reportUri: "/report-csp-violation",
-      },
-    },
-  })
-);
+app.use(helmet());
 
 app.use(cors());
 app.use(ExpressMongoSanitize());
