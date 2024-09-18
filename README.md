@@ -1,4 +1,4 @@
-# Project Name
+# Sustainable Fashion Store
 
 Sustainable fashion e-commerce site
 
