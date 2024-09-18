@@ -4,6 +4,9 @@ import path from "path";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import ExpressMongoSanitize from "express-mongo-sanitize";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger.json" assert { type: "json" };
+
 import cors from "cors";
 import { fileURLToPath } from "url";
 // takes care of async errors so that we don't need to use try catch blocks
@@ -75,6 +78,19 @@ app.use(express.static(path.join(__dirname, "../../public")));
 app.get("/", (req, res) => {
   res.send("<h1>Store API</h1><a href='/api/v1/products'>Products route</a>");
 });
+
+const swaggerOptions = {
+  swaggerOptions: {
+    supportedSubmitMethods: [], // Disable all interactive API requests in Swagger
+  },
+};
+
+// Serve Swagger documentation
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, swaggerOptions)
+);
 
 //routes
 app.use("/api/v1/products", productsRouter);
