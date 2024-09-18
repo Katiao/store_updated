@@ -39,7 +39,20 @@ app.use(
       "Too many requests from this IP, please try again after 15 minutes",
   })
 );
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        imgSrc: [
+          "'self'",
+          "https://res.cloudinary.com",
+          "https://*.cloudinary.com",
+          "data:",
+        ],
+      },
+    },
+  })
+);
 
 app.use(cors());
 app.use(ExpressMongoSanitize());
