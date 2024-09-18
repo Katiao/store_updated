@@ -2,6 +2,8 @@
 
 Sustainable fashion e-commerce site
 
+Live site: https://sustainable-fashion-store.onrender.com
+
 ## Features
 
 - View sustainable fashion products
@@ -9,6 +11,7 @@ Sustainable fashion e-commerce site
 - Add product(s) to shopping cart
 - Register as a user
 - Login as a user
+- Login as guest user to test application
 - Logged in users only:
   - Purchase product(s)
   - View personal history of purchased product(s)
@@ -28,8 +31,8 @@ npm install
 ## Run project locally in dev mode (from root directory)
 
 ```bash
-npm run build     # Installs packages and builds both frontend and backend
-npm run start     # Starts project locally, which is available on http://localhost:3000
+npm run build     # Install packages and build both frontend and backend
+npm run start     # Start project locally, which is available on http://localhost:3000
 ```
 
 ## Technologies Used
